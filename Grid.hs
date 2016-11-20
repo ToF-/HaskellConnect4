@@ -3,13 +3,14 @@ module Grid (initial, cell, push, Color(..) ) where
 data Color = Yellow | Red 
     deriving (Eq, Show)
 
-type Grid = Maybe Color
+type Grid = [Color]
 
 initial :: Grid 
-initial = Nothing
+initial = []
 
 cell :: Grid -> (Int,Int) -> Maybe Color
-cell g _ = g
+cell g (_,r) | r < length g = Just (g!!r)
+             | otherwise    = Nothing
 
 push :: Grid -> Int -> Color -> Grid
-push _ _ c = Just c
+push g _ c = g ++ [c]
