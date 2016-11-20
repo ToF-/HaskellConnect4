@@ -20,3 +20,9 @@ main = hspec $ do
                 let g = push (push i 0 Yellow) 0 Red
                 cell g (0,0) `shouldBe` Just Yellow
                 cell g (0,1) `shouldBe` Just Red
+
+            it "that are are stacked on several columns" $ do
+                let g = push (push i 0 Yellow) 1 Red
+                cell g (0,0) `shouldBe` Just Yellow
+                cell g (1,0) `shouldBe` Just Red
+                
